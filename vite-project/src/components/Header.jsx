@@ -1,3 +1,7 @@
 export default function Header(){
-    return <header>Hola soy el header</header>
+    return <header className="centro">
+            <h1>
+                luna 
+            </h1>
+           </header>
 }

@@ -1,8 +1,8 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
 import {Post} from './components/Post';
-import { useEffect } from 'react';
-import supabase from '../lib/helper/supabaseClient';
+import { useEffect, useState} from 'react';
+import supabase from './lib/helper/supabaseClient';
 
 export default function App() {
   const[user, setUser] = useState(null)
@@ -22,8 +22,8 @@ export default function App() {
   },[])
 
   const handleLogin = async() => {
-    const {error} = await supabase.auth.signInWith0Auth({
-      provider: "github",
+    const {error, data} = await supabase.auth.signInWithOAuth({
+      provider: "github"
     })
     if (error) {
       console.log(error);
@@ -36,11 +36,12 @@ export default function App() {
      <Header/>
      <button onClick={handleLogin}>Inicio sesion</button>
      <Post
-       titulo={"ono"} 
-       description={"ini"} 
+       titulo={"Luna"} 
+       description={"luna"} 
        link={"./src/img/luna.webp"}
-       parrafo={"bbbb"}
+       parrafo={"noche"}
      />
+     
      <Footer/>
     </>
   )
